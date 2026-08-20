@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Fotografie & DigiArt</title>
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-        /* BASE DESIGN - TITAN THEME */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,14 +17,14 @@
         body {
             background-color: #0f1115;
             color: #e0e6ed;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* HEADER & PROFIL */
+        /* HEADER */
         header {
             text-align: center;
             padding: 40px 20px 20px;
@@ -43,7 +45,7 @@
             letter-spacing: 1px;
         }
 
-        /* ALBUM FILTER NAVIGATION */
+        /* FILTER BUTTONS */
         .filter-nav {
             display: flex;
             justify-content: center;
@@ -70,7 +72,7 @@
             border-color: #64ffda;
         }
 
-        /* GALLERY GRID */
+        /* GALERIE GRID */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -104,7 +106,6 @@
             text-align: center;
         }
 
-        /* HIDE FILTERED ITEMS */
         .gallery-item.hide {
             display: none;
         }
@@ -125,7 +126,7 @@
         <p class="subtitle">Fotografie & DigiArt</p>
     </header>
 
-    <!-- FILTER BUTTONS -->
+    <!-- FILTER-MENÜ -->
     <nav class="filter-nav">
         <button class="filter-btn active" onclick="filterGallery('all')">Alle Werke</button>
         <button class="filter-btn" onclick="filterGallery('sw')">Schwarz-Weiß</button>
@@ -133,54 +134,50 @@
         <button class="filter-btn" onclick="filterGallery('digiart')">DigiArt</button>
     </nav>
 
-    <!-- GALERIE -->
+    <!-- BILDER-GALERIE -->
     <main class="gallery-grid">
 
-        <!-- SCHWARZ-WEIß FOTOS -->
         <div class="gallery-item sw">
-            <img src="sw-1.jpg" alt="Schwarz-Weiß-Fotografie">
-            <div class="caption">Morgenlicht am Fluss | Schwarz-Weiß</div>
+            <img src="1787237775557.jpg" alt="Schwarz-Weiß">
+            <div class="caption">Schwarz-Weiß Aufnahme</div>
         </div>
 
-        <div class="gallery-item sw">
-            <img src="sw-2.jpg" alt="Schwarz-Weiß-Fotografie">
-            <div class="caption">Kontraste & Schatten | Schwarz-Weiß</div>
-        </div>
-
-        <!-- FOTOGRAFIE -->
-        <div class="gallery-item foto">
-            <img src="foto-1.jpg" alt="Fotografie">
-            <div class="caption">Naturaufnahme | Fotografie</div>
-        </div>
-
-        <!-- DIGIART -->
         <div class="gallery-item digiart">
-            <img src="digi-1.jpg" alt="DigiArt">
-            <div class="caption">Digitale Komposition | DigiArt</div>
+            <img src="fb_img_1787219312944.jpg" alt="DigiArt">
+            <div class="caption">DigiArt Werk</div>
         </div>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 – Erstellt mit GitHub Pages</p>
+        <p>&copy; Portfolio – Erstellt mit GitHub Pages</p>
     </footer>
 
-    <!-- INTERAKTIVER FILTER CODE -->
+    <!-- JAVASCRIPT FÜR DIE FILTER-FUNKTION -->
     <script>
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.filter-btn');
 
-            // Button-Status anpassen
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Bilder filtern
             items.forEach(item => {
                 if (category === 'all' || item.classList.contains(category)) {
                     item.classList.remove('hide');
                 } else {
                     item.classList.add('hide');
+                }
+            });
+        }
+
+        // Netlify Identity Redirect Handlers
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
                 }
             });
         }
