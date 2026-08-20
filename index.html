@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Fotografie & DigiArt</title>
-    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         * {
@@ -24,7 +22,6 @@
             margin: 0 auto;
         }
 
-        /* HEADER */
         header {
             text-align: center;
             padding: 40px 20px 20px;
@@ -45,7 +42,6 @@
             letter-spacing: 1px;
         }
 
-        /* FILTER BUTTONS */
         .filter-nav {
             display: flex;
             justify-content: center;
@@ -72,7 +68,6 @@
             border-color: #64ffda;
         }
 
-        /* GALERIE GRID */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -110,7 +105,6 @@
             display: none;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 50px 0 20px;
@@ -126,7 +120,6 @@
         <p class="subtitle">Fotografie & DigiArt</p>
     </header>
 
-    <!-- FILTER-MENÜ -->
     <nav class="filter-nav">
         <button class="filter-btn active" onclick="filterGallery('all')">Alle Werke</button>
         <button class="filter-btn" onclick="filterGallery('sw')">Schwarz-Weiß</button>
@@ -134,9 +127,7 @@
         <button class="filter-btn" onclick="filterGallery('digiart')">DigiArt</button>
     </nav>
 
-    <!-- BILDER-GALERIE -->
     <main class="gallery-grid">
-
         <div class="gallery-item sw">
             <img src="1787237775557.jpg" alt="Schwarz-Weiß">
             <div class="caption">Schwarz-Weiß Aufnahme</div>
@@ -146,14 +137,12 @@
             <img src="fb_img_1787219312944.jpg" alt="DigiArt">
             <div class="caption">DigiArt Werk</div>
         </div>
-
     </main>
 
     <footer>
         <p>&copy; Portfolio – Erstellt mit GitHub Pages</p>
     </footer>
 
-    <!-- JAVASCRIPT FÜR DIE FILTER-FUNKTION -->
     <script>
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
@@ -171,7 +160,6 @@
             });
         }
 
-        // Netlify Identity Redirect Handlers
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
