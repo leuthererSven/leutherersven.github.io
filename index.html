@@ -3,170 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sven Leutherer | Schwarz-Weiß-Fotografie</title>
+    <title>Portfolio | Fotografie & DigiArt</title>
     <style>
-        /* Titan Dark-Style Base */
-        body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0 20px;
+        /* BASE DESIGN - TITAN THEME */
+        * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Header / Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 0;
+        body {
+            background-color: #0f1115;
+            color: #e0e6ed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            border-bottom: 1px solid #222;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        /* HEADER & PROFIL */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        h1 {
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #fff;
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
         }
 
-        nav a {
-            color: #888;
-            text-decoration: none;
-            margin-left: 20px;
+        p.subtitle {
+            color: #8892b0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* ALBUM FILTER NAVIGATION */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #232a36;
+            color: #8892b0;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
             font-size: 0.9rem;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            color: #fff;
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #232a36;
+            color: #64ffda;
+            border-color: #64ffda;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-
-        /* Über Mich Sektion */
-        .about-section {
-            max-width: 700px;
-            margin: 60px 0 80px 0;
-        }
-
-        .about-section h1 {
-            font-size: 1.8rem;
-            font-weight: 300;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .about-section p {
-            line-height: 1.7;
-            color: #aaa;
-            font-size: 1rem;
-        }
-
-        /* Galerie / Grid im Titan-Stil */
+        /* GALLERY GRID */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .gallery-item {
-            background-color: #141414;
-            border: 1px solid #1a1a1a;
+            background-color: #171c24;
+            border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+            border: 1px solid #232a36;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .gallery-item:hover {
-            border-color: #444;
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+            border-color: #64ffda;
         }
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 280px;
+            object-fit: cover;
             display: block;
-            filter: grayscale(100%); /* Stellt sicher, dass Fotos Schwarz-Weiß wirken */
-            transition: opacity 0.3s;
-        }
-
-        .gallery-item:hover img {
-            opacity: 0.9;
         }
 
         .caption {
             padding: 15px;
-            font-size: 0.85rem;
-            color: #888;
-            border-top: 1px solid #1a1a1a;
+            font-size: 0.9rem;
+            color: #a8b2d1;
+            text-align: center;
         }
 
+        /* HIDE FILTERED ITEMS */
+        .gallery-item.hide {
+            display: none;
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 60px 0;
-            color: #444;
+            padding: 50px 0 20px;
+            color: #4a5568;
             font-size: 0.8rem;
-            border-top: 1px solid #1a1a1a;
-            margin-top: 80px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Sven Leutherer</div>
-        <nav>
-            <a href="#about">Über mich</a>
-            <a href="#gallery">Portfolio</a>
-        </nav>
+        <h1>Portfolio</h1>
+        <p class="subtitle">Fotografie & DigiArt</p>
     </header>
 
-    <div class="container">
-        
-        <!-- Über Mich Sektion -->
-        <section id="about" class="about-section">
-            <h1>Schwarz-Weiß-Fotografie</h1>
-            <p>
-                Mein Name ist Sven Leutherer. Nach vielen Jahren in der visuellen Gestaltung und der digitalen Kunst (DigiArt) konzentriere ich mich heute auf die reine Schwarz-Weiß-Fotografie. Mich fasziniert das Zusammenspiel von Licht, Schatten, harten Kontrasten und klarer Komposition – ehrlich, pur und direkt im Moment der Aufnahme geschaffen.
-            </p>
-        </section>
+    <!-- FILTER BUTTONS -->
+    <nav class="filter-nav">
+        <button class="filter-btn active" onclick="filterGallery('all')">Alle Werke</button>
+        <button class="filter-btn" onclick="filterGallery('sw')">Schwarz-Weiß</button>
+        <button class="filter-btn" onclick="filterGallery('foto')">Fotografie</button>
+        <button class="filter-btn" onclick="filterGallery('digiart')">DigiArt</button>
+    </nav>
 
-        <!-- Galerie Sektion -->
-        <section id="gallery">
-            <div class="gallery-grid">
-                
-                <!-- Bild 1 -->
-                <div class="gallery-item">
-                    <img src="DEIN-BILD-LINK-1.jpg" alt="Schwarz-Weiss-Fotografie">
-                    <div class="caption">Lichtspiel No. 1 | Augst 2026</div>
-                </div>
+    <!-- GALERIE -->
+    <main class="gallery-grid">
 
-                <!-- Bild 2 -->
-                <div class="gallery-item">
-                    <img src="DEIN-BILD-LINK-2.jpg" alt="Schwarz-Weiss-Fotografie">
-                    <div class="caption">Schattenwurf und Geometrie</div>
-                </div>
+        <!-- SCHWARZ-WEIß FOTOS -->
+        <div class="gallery-item sw">
+            <img src="sw-1.jpg" alt="Schwarz-Weiß-Fotografie">
+            <div class="caption">Morgenlicht am Fluss | Schwarz-Weiß</div>
+        </div>
 
-                <!-- Hier einfach weitere gallery-item Blöcke einfügen für neue Bilder -->
+        <div class="gallery-item sw">
+            <img src="sw-2.jpg" alt="Schwarz-Weiß-Fotografie">
+            <div class="caption">Kontraste & Schatten | Schwarz-Weiß</div>
+        </div>
 
-            </div>
-        </section>
+        <!-- FOTOGRAFIE -->
+        <div class="gallery-item foto">
+            <img src="foto-1.jpg" alt="Fotografie">
+            <div class="caption">Naturaufnahme | Fotografie</div>
+        </div>
 
-    </div>
+        <!-- DIGIART -->
+        <div class="gallery-item digiart">
+            <img src="digi-1.jpg" alt="DigiArt">
+            <div class="caption">Digitale Komposition | DigiArt</div>
+        </div>
+
+    </main>
 
     <footer>
-        &copy; 2026 Sven Leutherer. Alle Rechte vorbehalten.
+        <p>&copy; 2026 – Erstellt mit GitHub Pages</p>
     </footer>
+
+    <!-- INTERAKTIVER FILTER CODE -->
+    <script>
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Button-Status anpassen
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Bilder filtern
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
